@@ -15,6 +15,8 @@ class ViewController: NSViewController {
     @IBOutlet var outputLabel: NSTextField!
     @IBOutlet var fontColorWell: NSColorWell!
     @IBOutlet var strokeColorWell: NSColorWell!
+    @IBOutlet var strokeWidthTextField: NSTextField!
+    @IBOutlet var strokeWidthStepper: NSStepper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,11 @@ class ViewController: NSViewController {
         outputLabel.font = commentPreferences.font
         fontNameTextField.stringValue = "\(commentPreferences.font.fontName) \(commentPreferences.font.pointSize)"
         fontColorWell.color = commentPreferences.fontColor
+        strokeColorWell.color = commentPreferences.strokeColor
+        strokeWidthTextField.stringValue = String(format: "%.1f", commentPreferences.strokeWidth)
+        strokeWidthStepper.floatValue = commentPreferences.strokeWidth
+        
+        
         updateOutputLabel()
         
         fontPanelButtonClicked(self)
@@ -44,13 +51,14 @@ class ViewController: NSViewController {
             .foregroundColor : commentPreferences.fontColor,
             .font : NSFont(name: commentPreferences.font.fontName, size: commentPreferences.font.pointSize)
                 ?? NSFont.boldSystemFont(ofSize: CGFloat(24)),
-            .strokeColor : NSColor.black,
-            .strokeWidth : -2.0
+            .strokeColor : commentPreferences.strokeColor,
+            .strokeWidth : -commentPreferences.strokeWidth
         ]
         
         let attibutesString = NSAttributedString(string: outputLabel.stringValue,
                                                  attributes: stringAttributes)
         outputLabel.attributedStringValue = attibutesString
+        outputLabel.becomeFirstResponder()
     }
     
     @IBAction func changeFontColor(_ sender: Any) {
@@ -60,8 +68,31 @@ class ViewController: NSViewController {
         if (colorWell.identifier!.rawValue == "FontColorWell") {
             commentPreferences.fontColor = colorWell.color
         } else if (colorWell.identifier!.rawValue == "StrokeColorWell") {
-            print("\(colorWell.color)")
+            commentPreferences.strokeColor = colorWell.color
         }
+        updateOutputLabel()
+    }
+    
+    @IBAction func strokeWidthChanged(_ sender: NSTextField) {
+        var strokeWidth = sender.floatValue // 変換できない場合は0.0が帰ってくる
+        
+        if strokeWidth < 0.0 || strokeWidth > 100.0 {
+            strokeWidth = 0.0
+        }
+        
+        if strokeWidth == 0.0 {
+            sender.stringValue = "0.0"
+        }
+
+        commentPreferences.strokeWidth = strokeWidth
+        strokeWidthStepper.floatValue = strokeWidth
+        updateOutputLabel()
+    }
+    
+    @IBAction func strokeWidthStepperClicked(_ sender: NSStepper) {
+        let strokeWidth = sender.floatValue
+        commentPreferences.strokeWidth = strokeWidth
+        strokeWidthTextField.stringValue = String(format: "%.1f", strokeWidth)
         updateOutputLabel()
     }
 }
