@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController, NSFontChanging {
+class ViewController: NSViewController {
 
     @IBOutlet weak var fontNameTextField: NSTextField!
     var commentPreferences = CommentPreferences()
@@ -33,14 +33,21 @@ class ViewController: NSViewController, NSFontChanging {
         NSFontPanel.shared.makeKeyAndOrderFront(self)
     }
     
+    func updateOutputLabel() {
+        outputLabel.font = commentPreferences.font
+        
+    }
+    
+}
+
+extension ViewController :NSFontChanging {
     func changeFont(_ sender: NSFontManager?) {
         guard let fontManager = sender else {
             return
         }
         let newFont = fontManager.convert(commentPreferences.font)
         commentPreferences.font = newFont
-        outputLabel.font = commentPreferences.font
         fontNameTextField.stringValue = "\(commentPreferences.font.fontName) \(commentPreferences.font.pointSize)"
+        updateOutputLabel()
     }
 }
-
