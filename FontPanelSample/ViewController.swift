@@ -13,6 +13,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var fontNameTextField: NSTextField!
     var commentPreferences = CommentPreferences()
     @IBOutlet var outputLabel: NSTextField!
+    @IBOutlet var fontColorWell: NSColorWell!
+    @IBOutlet var strokeColorWell: NSColorWell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,9 @@ class ViewController: NSViewController {
         // Do any additional setup after loading the view.
         outputLabel.font = commentPreferences.font
         fontNameTextField.stringValue = "\(commentPreferences.font.fontName) \(commentPreferences.font.pointSize)"
+        fontColorWell.color = commentPreferences.fontColor
+        updateOutputLabel()
+        
         fontPanelButtonClicked(self)
     }
 
@@ -34,13 +39,34 @@ class ViewController: NSViewController {
     }
     
     func updateOutputLabel() {
-        outputLabel.font = commentPreferences.font
         
+        let stringAttributes: [NSAttributedString.Key : Any] = [
+            .foregroundColor : commentPreferences.fontColor,
+            .font : NSFont(name: commentPreferences.font.fontName, size: commentPreferences.font.pointSize)
+                ?? NSFont.boldSystemFont(ofSize: CGFloat(24)),
+            .strokeColor : NSColor.black,
+            .strokeWidth : -2.0
+        ]
+        
+        let attibutesString = NSAttributedString(string: outputLabel.stringValue,
+                                                 attributes: stringAttributes)
+        outputLabel.attributedStringValue = attibutesString
     }
     
+    @IBAction func changeFontColor(_ sender: Any) {
+        guard let colorWell = sender as? NSColorWell else {
+            return
+        }
+        if (colorWell.identifier!.rawValue == "FontColorWell") {
+            commentPreferences.fontColor = colorWell.color
+        } else if (colorWell.identifier!.rawValue == "StrokeColorWell") {
+            print("\(colorWell.color)")
+        }
+        updateOutputLabel()
+    }
 }
 
-extension ViewController :NSFontChanging {
+extension ViewController : NSFontChanging {
     func changeFont(_ sender: NSFontManager?) {
         guard let fontManager = sender else {
             return

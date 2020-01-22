@@ -775,15 +775,21 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IlK-gX-msR">
+                            <colorWell identifier="FontColorWell" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IlK-gX-msR">
                                 <rect key="frame" x="134" y="191" width="44" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="changeFontColor:" target="XfG-lQ-9wD" id="sj2-Np-EaL"/>
+                                </connections>
                             </colorWell>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4L-C7-eHl">
+                            <colorWell identifier="StrokeColorWell" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4L-C7-eHl">
                                 <rect key="frame" x="134" y="163" width="44" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="changeFontColor:" target="XfG-lQ-9wD" id="yPK-23-pvt"/>
+                                </connections>
                             </colorWell>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMm-oh-EAl">
                                 <rect key="frame" x="134" y="136" width="44" height="22"/>
@@ -847,8 +853,10 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="fontNameTextField" destination="mSg-PX-Oo7" id="KUO-39-Wr7"/>
+                        <outlet property="fontColorWell" destination="IlK-gX-msR" id="b6B-ww-XbC"/>
+                        <outlet property="fontNameTextField" destination="mSg-PX-Oo7" id="F1Q-mQ-AsS"/>
                         <outlet property="outputLabel" destination="Af4-wP-TdD" id="XWo-Zj-y2H"/>
+                        <outlet property="strokeColorWell" destination="p4L-C7-eHl" id="hLA-vP-g47"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
