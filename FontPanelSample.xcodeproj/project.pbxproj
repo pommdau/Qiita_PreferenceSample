@@ -282,6 +282,7 @@
 				CODE_SIGN_ENTITLEMENTS = FontPanelSample/FontPanelSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BWMJMJK727;
 				INFOPLIST_FILE = FontPanelSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +301,7 @@
 				CODE_SIGN_ENTITLEMENTS = FontPanelSample/FontPanelSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BWMJMJK727;
 				INFOPLIST_FILE = FontPanelSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
