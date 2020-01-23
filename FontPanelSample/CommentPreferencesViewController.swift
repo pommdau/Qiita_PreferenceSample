@@ -15,6 +15,8 @@ class CommentPreferencesViewController: NSViewController {
     @IBOutlet var strokeColorWell: NSColorWell!
     @IBOutlet var strokeWidthTextField: NSTextField!
     @IBOutlet var strokeWidthStepper: NSStepper!
+    @IBOutlet var alphaSlider: NSSlider!
+    @IBOutlet var alphaTextField: NSTextField!
     
     let commentPreferences = CommentPreferences()
     
@@ -27,6 +29,8 @@ class CommentPreferencesViewController: NSViewController {
         strokeColorWell.color = commentPreferences.strokeColor
         strokeWidthTextField.stringValue = String(format: "%.1f", commentPreferences.strokeWidth)
         strokeWidthStepper.floatValue = commentPreferences.strokeWidth
+        alphaSlider.doubleValue = Double(commentPreferences.fontColor.alphaComponent)
+        alphaTextField.doubleValue = Double(commentPreferences.fontColor.alphaComponent)
         
         commentPreferencesChanged()
     }
@@ -87,15 +91,30 @@ class CommentPreferencesViewController: NSViewController {
         commentPreferencesChanged()
     }
     
-    @IBAction func opacitySliderValueChanged(_ sender: Any) {
+    @IBAction func alphaSliderValueChanged(_ sender: Any) {
         guard let slider = sender as? NSSlider else {
             return
         }
-        print("\(slider.floatValue)")
+        
+        let alpha = slider.doubleValue
+        alphaTextField.doubleValue = alpha
+        commentPreferences.fontColor = commentPreferences.fontColor.withAlphaComponent(CGFloat(alpha))
+        commentPreferences.strokeColor = commentPreferences.strokeColor.withAlphaComponent(CGFloat(alpha))
+        
+        commentPreferencesChanged()
     }
     
-    @IBAction func opacityTextFieldValueChanged(_ sender: Any) {
+    @IBAction func alphaTextFieldValueChanged(_ sender: Any) {
+        // todo インプット確認
         
+        let alpha = alphaTextField.doubleValue
+        print("\(alpha)")
+        alphaSlider.doubleValue = alpha
+        
+        commentPreferences.fontColor = commentPreferences.fontColor.withAlphaComponent(CGFloat(alpha))
+        commentPreferences.strokeColor = commentPreferences.strokeColor.withAlphaComponent(CGFloat(alpha))
+        
+        commentPreferencesChanged()
     }
     
 }
