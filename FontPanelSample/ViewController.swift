@@ -5,22 +5,26 @@
 //  Created by HIROKI IKEUCHI on 2020/01/22.
 //  Copyright © 2020年 hikeuchi. All rights reserved.
 //
+// TODO:set saved fbont on fontPanel
 
 import Cocoa
 
-class ViewController: NSViewController, NSFontChanging {
-
-    @IBOutlet weak var fontNameTextField: NSTextField!
-    var commentPreferences = CommentPreferences()
-    @IBOutlet var outputLabel: NSTextField!
+class ViewController: NSViewController {
+    
+    let commentPreferences = CommentPreferences()
+    @IBOutlet var outputTextField: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        outputLabel.font = commentPreferences.font
-        fontNameTextField.stringValue = "\(commentPreferences.font.fontName) \(commentPreferences.font.pointSize)"
-        fontPanelButtonClicked(self)
+        
+        let notificationName = Notification.Name(rawValue: "CommnetPreferencesChanged")
+        NotificationCenter.default.addObserver(forName: notificationName,
+                                               object: nil,
+                                               queue: nil) {
+                                                (notification) in
+                                                self.updateOutputTextField()
+        }
+        updateOutputTextField()
     }
 
     override var representedObject: Any? {
@@ -28,19 +32,19 @@ class ViewController: NSViewController, NSFontChanging {
         // Update the view, if already loaded.
         }
     }
-
-    @IBAction func fontPanelButtonClicked(_ sender: Any) {
-        NSFontPanel.shared.makeKeyAndOrderFront(self)
+    
+    func updateOutputTextField() {
+        let stringAttributes: [NSAttributedString.Key : Any] = [
+            .font : NSFont(name: commentPreferences.font.fontName, size: commentPreferences.font.pointSize)
+                ?? NSFont.boldSystemFont(ofSize: CGFloat(24)),
+            .foregroundColor : commentPreferences.fontColor,
+            .strokeColor : commentPreferences.strokeColor,
+            .strokeWidth : -commentPreferences.strokeWidth
+        ]
+        
+        let attibutesString = NSAttributedString(string: outputTextField.stringValue,
+                                                 attributes: stringAttributes)
+        outputTextField.attributedStringValue = attibutesString
     }
     
-    func changeFont(_ sender: NSFontManager?) {
-        guard let fontManager = sender else {
-            return
-        }
-        let newFont = fontManager.convert(commentPreferences.font)
-        commentPreferences.font = newFont
-        outputLabel.font = commentPreferences.font
-        fontNameTextField.stringValue = "\(commentPreferences.font.fontName) \(commentPreferences.font.pointSize)"
-    }
 }
-

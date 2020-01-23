@@ -12,6 +12,7 @@
 		D091C59D23D7E5E4008C2FAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D091C59C23D7E5E4008C2FAD /* Assets.xcassets */; };
 		D091C5A023D7E5E4008C2FAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D091C59E23D7E5E4008C2FAD /* Main.storyboard */; };
 		D091C5A923D81068008C2FAD /* CommentPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091C5A823D81068008C2FAD /* CommentPreferences.swift */; };
+		D091C5B623D96AB9008C2FAD /* CommentPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091C5B423D96AB9008C2FAD /* CommentPreferencesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		D091C5A123D7E5E4008C2FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D091C5A223D7E5E4008C2FAD /* FontPanelSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FontPanelSample.entitlements; sourceTree = "<group>"; };
 		D091C5A823D81068008C2FAD /* CommentPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPreferences.swift; sourceTree = "<group>"; };
+		D091C5B423D96AB9008C2FAD /* CommentPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPreferencesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				D091C59823D7E5E3008C2FAD /* AppDelegate.swift */,
 				D091C59A23D7E5E3008C2FAD /* ViewController.swift */,
+				D091C5B423D96AB9008C2FAD /* CommentPreferencesViewController.swift */,
 				D091C5A823D81068008C2FAD /* CommentPreferences.swift */,
 				D091C59C23D7E5E4008C2FAD /* Assets.xcassets */,
 				D091C59E23D7E5E4008C2FAD /* Main.storyboard */,
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D091C5A923D81068008C2FAD /* CommentPreferences.swift in Sources */,
+				D091C5B623D96AB9008C2FAD /* CommentPreferencesViewController.swift in Sources */,
 				D091C59B23D7E5E3008C2FAD /* ViewController.swift in Sources */,
 				D091C59923D7E5E3008C2FAD /* AppDelegate.swift in Sources */,
 			);
@@ -278,6 +282,7 @@
 				CODE_SIGN_ENTITLEMENTS = FontPanelSample/FontPanelSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BWMJMJK727;
 				INFOPLIST_FILE = FontPanelSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -296,6 +301,7 @@
 				CODE_SIGN_ENTITLEMENTS = FontPanelSample/FontPanelSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BWMJMJK727;
 				INFOPLIST_FILE = FontPanelSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
