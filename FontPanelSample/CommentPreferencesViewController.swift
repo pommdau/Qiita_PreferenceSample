@@ -62,6 +62,8 @@ class CommentPreferencesViewController: NSViewController {
         commentPreferencesChanged()
     }
     
+    
+    
     @IBAction func strokeWidthChanged(_ sender: NSTextField) {
         var strokeWidth = sender.floatValue // 変換できない場合は0.0が帰ってくる
         
@@ -84,6 +86,18 @@ class CommentPreferencesViewController: NSViewController {
         strokeWidthTextField.stringValue = String(format: "%.1f", strokeWidth)
         commentPreferencesChanged()
     }
+    
+    @IBAction func opacitySliderValueChanged(_ sender: Any) {
+        guard let slider = sender as? NSSlider else {
+            return
+        }
+        print("\(slider.floatValue)")
+    }
+    
+    @IBAction func opacityTextFieldValueChanged(_ sender: Any) {
+        
+    }
+    
 }
 
 extension CommentPreferencesViewController : NSFontChanging {

@@ -35,9 +35,9 @@ class ViewController: NSViewController {
     
     func updateOutputTextField() {
         let stringAttributes: [NSAttributedString.Key : Any] = [
-            .foregroundColor : commentPreferences.fontColor,
             .font : NSFont(name: commentPreferences.font.fontName, size: commentPreferences.font.pointSize)
                 ?? NSFont.boldSystemFont(ofSize: CGFloat(24)),
+            .foregroundColor : commentPreferences.fontColor,
             .strokeColor : commentPreferences.strokeColor,
             .strokeWidth : -commentPreferences.strokeWidth
         ]
