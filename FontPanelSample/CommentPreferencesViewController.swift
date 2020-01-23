@@ -77,6 +77,8 @@ class CommentPreferencesViewController: NSViewController {
         
         if strokeWidth == 0.0 {
             sender.stringValue = "0.0"
+        } else {
+            sender.stringValue = String(format: "%.1f", strokeWidth)
         }
         
         commentPreferences.strokeWidth = strokeWidth
