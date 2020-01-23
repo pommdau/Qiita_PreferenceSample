@@ -5,34 +5,35 @@
 //  Created by HIROKI IKEUCHI on 2020/01/22.
 //  Copyright © 2020年 hikeuchi. All rights reserved.
 //
+// TODO:set saved fbont on fontPanel
 
 import Cocoa
 
 class ViewController: NSViewController {
 
     @IBOutlet weak var fontNameTextField: NSTextField!
-    var commentPreferences = CommentPreferences()
     @IBOutlet var outputLabel: NSTextField!
     @IBOutlet var fontColorWell: NSColorWell!
     @IBOutlet var strokeColorWell: NSColorWell!
     @IBOutlet var strokeWidthTextField: NSTextField!
     @IBOutlet var strokeWidthStepper: NSStepper!
     
+    let commentPreferences = CommentPreferences()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         outputLabel.font = commentPreferences.font
-        fontNameTextField.stringValue = "\(commentPreferences.font.fontName) \(commentPreferences.font.pointSize)"
+        fontNameTextField.stringValue = String(format: "%@ %d", commentPreferences.font.fontName, Int(commentPreferences.font.pointSize))
         fontColorWell.color = commentPreferences.fontColor
         strokeColorWell.color = commentPreferences.strokeColor
         strokeWidthTextField.stringValue = String(format: "%.1f", commentPreferences.strokeWidth)
         strokeWidthStepper.floatValue = commentPreferences.strokeWidth
         
-        
         updateOutputLabel()
         
-        fontPanelButtonClicked(self)
+        fontPanelButtonClicked(self)    // for debug
     }
 
     override var representedObject: Any? {
@@ -40,9 +41,20 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
+    
+    func displayResponderChain(_ sender: NSResponder?) {
+        guard let res = sender else {
+            return
+        }
+        print("\(String(describing: res.nextResponder))")
+    }
 
     @IBAction func fontPanelButtonClicked(_ sender: Any) {
-        NSFontPanel.shared.makeKeyAndOrderFront(self)
+        let fontManager = NSFontManager.shared
+        fontManager.target = self
+        let panel = fontManager.fontPanel(true)
+        panel?.orderFront(self)
+        panel?.isEnabled = true // trueをセットすると使用可能になります（今回は無くても良い？）
     }
     
     func updateOutputLabel() {
@@ -58,7 +70,6 @@ class ViewController: NSViewController {
         let attibutesString = NSAttributedString(string: outputLabel.stringValue,
                                                  attributes: stringAttributes)
         outputLabel.attributedStringValue = attibutesString
-        outputLabel.becomeFirstResponder()
     }
     
     @IBAction func changeFontColor(_ sender: Any) {
@@ -75,11 +86,11 @@ class ViewController: NSViewController {
     
     @IBAction func strokeWidthChanged(_ sender: NSTextField) {
         var strokeWidth = sender.floatValue // 変換できない場合は0.0が帰ってくる
-        
+
         if strokeWidth < 0.0 || strokeWidth > 100.0 {
             strokeWidth = 0.0
         }
-        
+
         if strokeWidth == 0.0 {
             sender.stringValue = "0.0"
         }
@@ -104,7 +115,7 @@ extension ViewController : NSFontChanging {
         }
         let newFont = fontManager.convert(commentPreferences.font)
         commentPreferences.font = newFont
-        fontNameTextField.stringValue = "\(commentPreferences.font.fontName) \(commentPreferences.font.pointSize)"
+        fontNameTextField.stringValue = String(format: "%@ %d", commentPreferences.font.fontName, Int(commentPreferences.font.pointSize))
         updateOutputLabel()
     }
 }

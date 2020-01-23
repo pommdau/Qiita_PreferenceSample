@@ -12,9 +12,8 @@ import Cocoa
 class CommentPreferences {
     
     init() {
-        UserDefaults.standard.register(defaults: ["strokeWidth": "-4.0"])
+        UserDefaults.standard.register(defaults: ["strokeWidth": "4.0"])
     }
-    
     
     var font: NSFont {
         get {
