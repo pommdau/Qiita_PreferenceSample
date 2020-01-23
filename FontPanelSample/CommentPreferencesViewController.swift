@@ -11,7 +11,6 @@ import Cocoa
 class CommentPreferencesViewController: NSViewController {
     
     @IBOutlet weak var fontNameTextField: NSTextField!
-    @IBOutlet var outputLabel: NSTextField!
     @IBOutlet var fontColorWell: NSColorWell!
     @IBOutlet var strokeColorWell: NSColorWell!
     @IBOutlet var strokeWidthTextField: NSTextField!
@@ -23,29 +22,19 @@ class CommentPreferencesViewController: NSViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        outputLabel.font = commentPreferences.font
         fontNameTextField.stringValue = String(format: "%@ %d", commentPreferences.font.fontName, Int(commentPreferences.font.pointSize))
         fontColorWell.color = commentPreferences.fontColor
         strokeColorWell.color = commentPreferences.strokeColor
         strokeWidthTextField.stringValue = String(format: "%.1f", commentPreferences.strokeWidth)
         strokeWidthStepper.floatValue = commentPreferences.strokeWidth
         
-        updateOutputLabel()
-        
-        fontPanelButtonClicked(self)    // for debug
+        commentPreferencesChanged()
     }
     
     override var representedObject: Any? {
         didSet {
             // Update the view, if already loaded.
         }
-    }
-    
-    func displayResponderChain(_ sender: NSResponder?) {
-        guard let res = sender else {
-            return
-        }
-        print("\(String(describing: res.nextResponder))")
     }
     
     @IBAction func fontPanelButtonClicked(_ sender: Any) {
@@ -56,19 +45,9 @@ class CommentPreferencesViewController: NSViewController {
         panel?.isEnabled = true // trueをセットすると使用可能になります（今回は無くても良い？）
     }
     
-    func updateOutputLabel() {
+    func commentPreferencesChanged() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "CommnetPreferencesChanged"), object: nil)
         
-        let stringAttributes: [NSAttributedString.Key : Any] = [
-            .foregroundColor : commentPreferences.fontColor,
-            .font : NSFont(name: commentPreferences.font.fontName, size: commentPreferences.font.pointSize)
-                ?? NSFont.boldSystemFont(ofSize: CGFloat(24)),
-            .strokeColor : commentPreferences.strokeColor,
-            .strokeWidth : -commentPreferences.strokeWidth
-        ]
-        
-        let attibutesString = NSAttributedString(string: outputLabel.stringValue,
-                                                 attributes: stringAttributes)
-        outputLabel.attributedStringValue = attibutesString
     }
     
     @IBAction func changeFontColor(_ sender: Any) {
@@ -80,7 +59,7 @@ class CommentPreferencesViewController: NSViewController {
         } else if (colorWell.identifier!.rawValue == "StrokeColorWell") {
             commentPreferences.strokeColor = colorWell.color
         }
-        updateOutputLabel()
+        commentPreferencesChanged()
     }
     
     @IBAction func strokeWidthChanged(_ sender: NSTextField) {
@@ -96,14 +75,14 @@ class CommentPreferencesViewController: NSViewController {
         
         commentPreferences.strokeWidth = strokeWidth
         strokeWidthStepper.floatValue = strokeWidth
-        updateOutputLabel()
+        commentPreferencesChanged()
     }
     
     @IBAction func strokeWidthStepperClicked(_ sender: NSStepper) {
         let strokeWidth = sender.floatValue
         commentPreferences.strokeWidth = strokeWidth
         strokeWidthTextField.stringValue = String(format: "%.1f", strokeWidth)
-        updateOutputLabel()
+        commentPreferencesChanged()
     }
 }
 
@@ -115,7 +94,7 @@ extension CommentPreferencesViewController : NSFontChanging {
         let newFont = fontManager.convert(commentPreferences.font)
         commentPreferences.font = newFont
         fontNameTextField.stringValue = String(format: "%@ %d", commentPreferences.font.fontName, Int(commentPreferences.font.pointSize))
-        updateOutputLabel()
+        commentPreferencesChanged()
     }
 }
 
