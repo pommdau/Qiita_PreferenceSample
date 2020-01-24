@@ -41,6 +41,11 @@ class AdvancedPreferencesViewController: NSViewController {
         }
     }
     
+    override func viewDidDisappear() {
+        let panel = NSFontManager.shared.fontPanel(true)
+        panel?.close()
+    }
+    
     @IBAction func showFontPanel(_ sender: Any) {
         let fontManager = NSFontManager.shared
         fontManager.target = self
