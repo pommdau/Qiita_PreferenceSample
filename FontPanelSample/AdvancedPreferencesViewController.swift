@@ -1,14 +1,14 @@
 //
-//  CommentPreferencesViewController.swift
+//  AdvancedPreferencesViewController.swift
 //  FontPanelSample
 //
-//  Created by HIROKI IKEUCHI on 2020/01/23.
+//  Created by HIROKI IKEUCHI on 2020/01/24.
 //  Copyright © 2020年 hikeuchi. All rights reserved.
-// TODO:set saved fbont on fontPanel
+//
 
 import Cocoa
 
-class CommentPreferencesViewController: NSViewController {
+class AdvancedPreferencesViewController: NSViewController {
     
     @IBOutlet weak var fontNameTextField: NSTextField!
     @IBOutlet var fontColorWell: NSColorWell!
@@ -41,7 +41,7 @@ class CommentPreferencesViewController: NSViewController {
         }
     }
     
-    @IBAction func fontPanelButtonClicked(_ sender: Any) {
+    @IBAction func showFontPanel(_ sender: Any) {
         let fontManager = NSFontManager.shared
         fontManager.target = self
         let panel = fontManager.fontPanel(true)
@@ -121,7 +121,7 @@ class CommentPreferencesViewController: NSViewController {
     
 }
 
-extension CommentPreferencesViewController : NSFontChanging {
+extension AdvancedPreferencesViewController : NSFontChanging {
     func changeFont(_ sender: NSFontManager?) {
         guard let fontManager = sender else {
             return

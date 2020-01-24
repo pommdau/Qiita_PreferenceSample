@@ -70,7 +70,7 @@ class PreferencesTabViewController: NSTabViewController {
         var frame = window.frameRect(forContentRect: viewFrame) // 開く予定のウィンドウのFrame
         frame.origin = window.frame.origin
         frame.origin.y += window.frame.height - frame.height
-
+        
         // apply to window
         self.view.isHidden = true   // ウィンドウサイズが決定したあとに内容を表示する
         NSAnimationContext.runAnimationGroup({ _ in
