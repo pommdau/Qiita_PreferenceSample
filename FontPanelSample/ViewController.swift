@@ -11,13 +11,13 @@ import Cocoa
 
 class ViewController: NSViewController {
     
-    let commentPreferences = CommentPreferences()
+    let advancedPreferences = AdvancedPreferences()
     @IBOutlet var outputTextField: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let notificationName = Notification.Name(rawValue: "CommnetPreferencesChanged")
+        let notificationName = Notification.Name(rawValue: "AdvancedPreferencesChanged")
         NotificationCenter.default.addObserver(forName: notificationName,
                                                object: nil,
                                                queue: nil) {
@@ -35,11 +35,11 @@ class ViewController: NSViewController {
     
     func updateOutputTextField() {
         let stringAttributes: [NSAttributedString.Key : Any] = [
-            .font : NSFont(name: commentPreferences.font.fontName, size: commentPreferences.font.pointSize)
+            .font : NSFont(name: advancedPreferences.font.fontName, size: advancedPreferences.font.pointSize)
                 ?? NSFont.boldSystemFont(ofSize: CGFloat(24)),
-            .foregroundColor : commentPreferences.fontColor,
-            .strokeColor : commentPreferences.strokeColor,
-            .strokeWidth : -commentPreferences.strokeWidth
+            .foregroundColor : advancedPreferences.fontColor,
+            .strokeColor : advancedPreferences.strokeColor,
+            .strokeWidth : -advancedPreferences.strokeWidth
         ]
         
         let attibutesString = NSAttributedString(string: outputTextField.stringValue,

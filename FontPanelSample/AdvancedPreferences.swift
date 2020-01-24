@@ -1,15 +1,15 @@
 //
-//  Defaults.swift
+//  AdvancedPreferences.swift
 //  FontPanelSample
 //
-//  Created by HIROKI IKEUCHI on 2020/01/22.
+//  Created by HIROKI IKEUCHI on 2020/01/24.
 //  Copyright © 2020年 hikeuchi. All rights reserved.
 //
 
 import Foundation
 import Cocoa
 
-class CommentPreferences {
+class AdvancedPreferences {
     
     init() {
         UserDefaults.standard.register(defaults: ["strokeWidth": "4.0"])
