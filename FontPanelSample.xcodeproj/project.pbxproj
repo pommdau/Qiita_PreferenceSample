@@ -7,15 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A8554D323D9BE2D00345F3F /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A8554D223D9BE2D00345F3F /* Preferences.storyboard */; };
+		2A8554D523D9BEE500345F3F /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8554D423D9BEE500345F3F /* PreferencesTabViewController.swift */; };
+		2A8554D723D9BF5400345F3F /* PreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8554D623D9BF5400345F3F /* PreferencesWindow.swift */; };
+		D08D81E623DA77D8000915D6 /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08D81E523DA77D8000915D6 /* GeneralPreferencesViewController.swift */; };
+		D08D81E823DA77EB000915D6 /* AdvancedPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08D81E723DA77EB000915D6 /* AdvancedPreferencesViewController.swift */; };
+		D08D81EA23DA7A5B000915D6 /* AdvancedPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08D81E923DA7A5B000915D6 /* AdvancedPreferences.swift */; };
+		D08D81EC23DA7D64000915D6 /* GeneralPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08D81EB23DA7D64000915D6 /* GeneralPreferences.swift */; };
 		D091C59923D7E5E3008C2FAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091C59823D7E5E3008C2FAD /* AppDelegate.swift */; };
 		D091C59B23D7E5E3008C2FAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091C59A23D7E5E3008C2FAD /* ViewController.swift */; };
 		D091C59D23D7E5E4008C2FAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D091C59C23D7E5E4008C2FAD /* Assets.xcassets */; };
 		D091C5A023D7E5E4008C2FAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D091C59E23D7E5E4008C2FAD /* Main.storyboard */; };
-		D091C5A923D81068008C2FAD /* CommentPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091C5A823D81068008C2FAD /* CommentPreferences.swift */; };
-		D091C5B623D96AB9008C2FAD /* CommentPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D091C5B423D96AB9008C2FAD /* CommentPreferencesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A8554D223D9BE2D00345F3F /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		2A8554D423D9BEE500345F3F /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
+		2A8554D623D9BF5400345F3F /* PreferencesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindow.swift; sourceTree = "<group>"; };
+		D08D81E523DA77D8000915D6 /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
+		D08D81E723DA77EB000915D6 /* AdvancedPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPreferencesViewController.swift; sourceTree = "<group>"; };
+		D08D81E923DA7A5B000915D6 /* AdvancedPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPreferences.swift; sourceTree = "<group>"; };
+		D08D81EB23DA7D64000915D6 /* GeneralPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferences.swift; sourceTree = "<group>"; };
 		D091C59523D7E5E3008C2FAD /* FontPanelSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FontPanelSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D091C59823D7E5E3008C2FAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D091C59A23D7E5E3008C2FAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -23,8 +35,6 @@
 		D091C59F23D7E5E4008C2FAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D091C5A123D7E5E4008C2FAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D091C5A223D7E5E4008C2FAD /* FontPanelSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FontPanelSample.entitlements; sourceTree = "<group>"; };
-		D091C5A823D81068008C2FAD /* CommentPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPreferences.swift; sourceTree = "<group>"; };
-		D091C5B423D96AB9008C2FAD /* CommentPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPreferencesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +69,15 @@
 			children = (
 				D091C59823D7E5E3008C2FAD /* AppDelegate.swift */,
 				D091C59A23D7E5E3008C2FAD /* ViewController.swift */,
-				D091C5B423D96AB9008C2FAD /* CommentPreferencesViewController.swift */,
-				D091C5A823D81068008C2FAD /* CommentPreferences.swift */,
-				D091C59C23D7E5E4008C2FAD /* Assets.xcassets */,
 				D091C59E23D7E5E4008C2FAD /* Main.storyboard */,
+				2A8554D223D9BE2D00345F3F /* Preferences.storyboard */,
+				2A8554D623D9BF5400345F3F /* PreferencesWindow.swift */,
+				2A8554D423D9BEE500345F3F /* PreferencesTabViewController.swift */,
+				D08D81EB23DA7D64000915D6 /* GeneralPreferences.swift */,
+				D08D81E523DA77D8000915D6 /* GeneralPreferencesViewController.swift */,
+				D08D81E923DA7A5B000915D6 /* AdvancedPreferences.swift */,
+				D08D81E723DA77EB000915D6 /* AdvancedPreferencesViewController.swift */,
+				D091C59C23D7E5E4008C2FAD /* Assets.xcassets */,
 				D091C5A123D7E5E4008C2FAD /* Info.plist */,
 				D091C5A223D7E5E4008C2FAD /* FontPanelSample.entitlements */,
 			);
@@ -127,6 +142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A8554D323D9BE2D00345F3F /* Preferences.storyboard in Resources */,
 				D091C59D23D7E5E4008C2FAD /* Assets.xcassets in Resources */,
 				D091C5A023D7E5E4008C2FAD /* Main.storyboard in Resources */,
 			);
@@ -139,9 +155,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D091C5A923D81068008C2FAD /* CommentPreferences.swift in Sources */,
-				D091C5B623D96AB9008C2FAD /* CommentPreferencesViewController.swift in Sources */,
+				D08D81E623DA77D8000915D6 /* GeneralPreferencesViewController.swift in Sources */,
+				D08D81E823DA77EB000915D6 /* AdvancedPreferencesViewController.swift in Sources */,
+				2A8554D523D9BEE500345F3F /* PreferencesTabViewController.swift in Sources */,
+				D08D81EC23DA7D64000915D6 /* GeneralPreferences.swift in Sources */,
+				D08D81EA23DA7A5B000915D6 /* AdvancedPreferences.swift in Sources */,
 				D091C59B23D7E5E3008C2FAD /* ViewController.swift in Sources */,
+				2A8554D723D9BF5400345F3F /* PreferencesWindow.swift in Sources */,
 				D091C59923D7E5E3008C2FAD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +302,7 @@
 				CODE_SIGN_ENTITLEMENTS = FontPanelSample/FontPanelSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BWMJMJK727;
+				DEVELOPMENT_TEAM = 634C8XNAX7;
 				INFOPLIST_FILE = FontPanelSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -301,7 +321,7 @@
 				CODE_SIGN_ENTITLEMENTS = FontPanelSample/FontPanelSample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = BWMJMJK727;
+				DEVELOPMENT_TEAM = 634C8XNAX7;
 				INFOPLIST_FILE = FontPanelSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
