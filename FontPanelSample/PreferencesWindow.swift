@@ -20,5 +20,4 @@ class PreferencesWindow: NSPanel {
             return super.validateMenuItem(menuItem)
         }
     }
-
 }

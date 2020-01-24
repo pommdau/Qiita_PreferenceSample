@@ -12,7 +12,7 @@
                 <controllerPlaceholder storyboardIdentifier="Preferences" storyboardName="Preferences" id="n6d-M0-2GH" sceneMemberID="viewController"/>
                 <customObject id="pND-qo-tBP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-313" y="37"/>
+            <point key="canvasLocation" x="-261" y="65"/>
         </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
@@ -724,7 +724,7 @@
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UaQ-3X-rhN">
                                 <rect key="frame" x="18" y="109" width="473" height="38"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="いろはにほへと" id="1nN-kg-BeA">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="さんぷる" id="1nN-kg-BeA">
                                     <font key="font" size="40" name=".HiraKakuInterface-W3"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

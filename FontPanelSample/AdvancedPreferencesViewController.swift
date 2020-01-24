@@ -23,7 +23,7 @@ class AdvancedPreferencesViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // UIの初期設定
         fontNameTextField.stringValue = String(format: "%@ %d", advancedPreferences.font.fontName, Int(advancedPreferences.font.pointSize))
         fontColorWell.color = advancedPreferences.fontColor
         strokeColorWell.color = advancedPreferences.strokeColor
@@ -31,8 +31,6 @@ class AdvancedPreferencesViewController: NSViewController {
         strokeWidthStepper.floatValue = advancedPreferences.strokeWidth
         opacitySlider.doubleValue = Double(advancedPreferences.opacity)
         opacityTextField.doubleValue = Double(advancedPreferences.opacity)
-        
-        advancedPreferencesChanged()
     }
     
     override var representedObject: Any? {
@@ -40,10 +38,14 @@ class AdvancedPreferencesViewController: NSViewController {
             // Update the view, if already loaded.
         }
     }
-    
+
     override func viewDidDisappear() {
         let panel = NSFontManager.shared.fontPanel(true)
-        panel?.close()
+        panel?.close()  // フォントパネルだけが残ってしまわないようにする
+    }
+    
+    func advancedPreferencesChanged() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "AdvancedPreferencesChanged"), object: nil)
     }
     
     @IBAction func showFontPanel(_ sender: Any) {
@@ -52,10 +54,6 @@ class AdvancedPreferencesViewController: NSViewController {
         let panel = fontManager.fontPanel(true)
         panel?.orderFront(self)
         panel?.isEnabled = true // trueをセットすると使用可能になります（今回は無くても良い？）
-    }
-    
-    func advancedPreferencesChanged() {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "AdvancedPreferencesChanged"), object: nil)
     }
     
     @IBAction func changeFontColor(_ sender: Any) {
@@ -69,8 +67,6 @@ class AdvancedPreferencesViewController: NSViewController {
         }
         advancedPreferencesChanged()
     }
-    
-    
     
     @IBAction func strokeWidthChanged(_ sender: NSTextField) {
         var strokeWidth = sender.floatValue // 変換できない場合は0.0が帰ってくる

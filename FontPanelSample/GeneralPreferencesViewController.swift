@@ -18,8 +18,6 @@ class GeneralPreferencesViewController: NSViewController {
         super.viewDidLoad()
         
         messageTextField.stringValue = generalPreferences.message
-        
-        generalPreferencesChanged()
     }
 
     func generalPreferencesChanged() {

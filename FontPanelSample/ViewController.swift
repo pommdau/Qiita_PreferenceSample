@@ -17,6 +17,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 設定ウィンドウからの通知を受け取る設定
         let notificationNames = [Notification.Name(rawValue: "AdvancedPreferencesChanged"),
                                  Notification.Name(rawValue: "GeneralPreferencesChanged")]
         
@@ -31,10 +32,10 @@ class ViewController: NSViewController {
         outputTextField.wantsLayer = true   // for changing opacity
         updateOutputTextField()
     }
-
+    
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
     

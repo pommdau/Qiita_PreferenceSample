@@ -49,31 +49,28 @@ class PreferencesTabViewController: NSTabViewController {
         self.switchPane(to: tabViewItem)
     }
     
-    
-    
     // MARK: Private Methods
     
     // resize window to fit to new view
     private func switchPane(to tabViewItem: NSTabViewItem) {
-        // 開く予定のTabViewのFrame
-        guard let viewFrame = tabViewItem.view?.frame else { return assertionFailure() }
+        guard let newViewFrame = tabViewItem.view?.frame else { return assertionFailure() } // 開く予定のTabViewのFrame
         
         // initialize tabView's frame size
         guard let window = self.view.window else {
             // 設定ウィンドウを新規に開く場合、「self.view.window = PreferencesWindow」がまだないので以下の処理とする
-            self.view.frame = viewFrame // 単純に開く予定のTabViewのFrameでOK
+            self.view.frame = newViewFrame // 単純に開く予定のTabViewのFrameを使う
             return
         }
 
         // calculate window frame
-        var frame = window.frameRect(forContentRect: viewFrame) // 開く予定のウィンドウのFrame
-        frame.origin = window.frame.origin
-        frame.origin.y += window.frame.height - frame.height
+        var newFrame = window.frameRect(forContentRect: newViewFrame) // 開く予定のウィンドウのFrame
+        newFrame.origin = window.frame.origin
+        newFrame.origin.y += window.frame.height - newFrame.height    // タイトルバーの位置を変えないようにするための処理
         
         // apply to window
-        self.view.isHidden = true   // ウィンドウサイズが決定したあとに内容を表示する
+        self.view.isHidden = true   // ウィンドウサイズが変更された後に内容を表示するため
         NSAnimationContext.runAnimationGroup({ _ in
-            window.animator().setFrame(frame, display: false)
+            window.animator().setFrame(newFrame, display: false)
         }, completionHandler: { [weak self] in
             self?.view.isHidden = false
             window.title = tabViewItem.label
