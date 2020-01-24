@@ -12,17 +12,22 @@ import Cocoa
 class ViewController: NSViewController {
     
     let advancedPreferences = AdvancedPreferences()
+    let generalPreferences = GeneralPreferences()
     @IBOutlet var outputTextField: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let notificationName = Notification.Name(rawValue: "AdvancedPreferencesChanged")
-        NotificationCenter.default.addObserver(forName: notificationName,
-                                               object: nil,
-                                               queue: nil) {
-                                                (notification) in
-                                                self.updateOutputTextField()
+        let notificationNames = [Notification.Name(rawValue: "AdvancedPreferencesChanged"),
+                                 Notification.Name(rawValue: "GeneralPreferencesChanged")]
+        
+        for notificationName in notificationNames {
+            NotificationCenter.default.addObserver(forName: notificationName,
+                                                   object: nil,
+                                                   queue: nil) {
+                                                    (notification) in
+                                                    self.updateOutputTextField()
+            }
         }
         updateOutputTextField()
     }
@@ -34,6 +39,8 @@ class ViewController: NSViewController {
     }
     
     func updateOutputTextField() {
+        outputTextField.stringValue = generalPreferences.message
+        
         let stringAttributes: [NSAttributedString.Key : Any] = [
             .font : NSFont(name: advancedPreferences.font.fontName, size: advancedPreferences.font.pointSize)
                 ?? NSFont.boldSystemFont(ofSize: CGFloat(24)),

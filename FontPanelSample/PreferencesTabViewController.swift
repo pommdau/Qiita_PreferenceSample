@@ -33,7 +33,6 @@ class PreferencesTabViewController: NSTabViewController {
             let identifier = UserDefaults.standard.string(forKey: "lastPreferencesPanelIdentifier"),
             let item = self.tabViewItems.enumerated().first(where: { ($0.element.identifier as? String) == identifier })
         {
-            print("\(item.offset)")
             self.selectedTabViewItemIndex = item.offset // 最後に開いたタブを選択状態とする
         }
     }
@@ -74,7 +73,6 @@ class PreferencesTabViewController: NSTabViewController {
         // apply to window
         self.view.isHidden = true   // ウィンドウサイズが決定したあとに内容を表示する
         NSAnimationContext.runAnimationGroup({ _ in
-            print("\(frame)")
             window.animator().setFrame(frame, display: false)
         }, completionHandler: { [weak self] in
             self?.view.isHidden = false

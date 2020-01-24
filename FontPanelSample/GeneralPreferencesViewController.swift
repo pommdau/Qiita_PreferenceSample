@@ -12,12 +12,27 @@ class GeneralPreferencesViewController: NSViewController {
 
     @IBOutlet var messageTextField: NSTextField!
     
+    let generalPreferences = GeneralPreferences()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        messageTextField.stringValue = generalPreferences.message
+        
+        generalPreferencesChanged()
+    }
+
+    func generalPreferencesChanged() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "GeneralPreferencesChanged"), object: nil)
     }
     
     @IBAction func messageChanged(_ sender: Any) {
+        guard let messageTextField = sender as? NSTextField else {
+            return
+        }
+        generalPreferences.message = messageTextField.stringValue
         
+        generalPreferencesChanged()
     }
 }
+

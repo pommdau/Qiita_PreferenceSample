@@ -32,7 +32,7 @@ class AdvancedPreferencesViewController: NSViewController {
         alphaSlider.doubleValue = Double(advancedPreferences.fontColor.alphaComponent)
         alphaTextField.doubleValue = Double(advancedPreferences.fontColor.alphaComponent)
         
-        commentPreferencesChanged()
+        advancedPreferencesChanged()
     }
     
     override var representedObject: Any? {
@@ -49,9 +49,8 @@ class AdvancedPreferencesViewController: NSViewController {
         panel?.isEnabled = true // trueをセットすると使用可能になります（今回は無くても良い？）
     }
     
-    func commentPreferencesChanged() {
+    func advancedPreferencesChanged() {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "AdvancedPreferencesChanged"), object: nil)
-        
     }
     
     @IBAction func changeFontColor(_ sender: Any) {
@@ -63,7 +62,7 @@ class AdvancedPreferencesViewController: NSViewController {
         } else if (colorWell.identifier!.rawValue == "StrokeColorWell") {
             advancedPreferences.strokeColor = colorWell.color
         }
-        commentPreferencesChanged()
+        advancedPreferencesChanged()
     }
     
     
@@ -83,14 +82,14 @@ class AdvancedPreferencesViewController: NSViewController {
         
         advancedPreferences.strokeWidth = strokeWidth
         strokeWidthStepper.floatValue = strokeWidth
-        commentPreferencesChanged()
+        advancedPreferencesChanged()
     }
     
     @IBAction func strokeWidthStepperClicked(_ sender: NSStepper) {
         let strokeWidth = sender.floatValue
         advancedPreferences.strokeWidth = strokeWidth
         strokeWidthTextField.stringValue = String(format: "%.1f", strokeWidth)
-        commentPreferencesChanged()
+        advancedPreferencesChanged()
     }
     
     @IBAction func alphaSliderValueChanged(_ sender: Any) {
@@ -103,20 +102,19 @@ class AdvancedPreferencesViewController: NSViewController {
         advancedPreferences.fontColor = advancedPreferences.fontColor.withAlphaComponent(CGFloat(alpha))
         advancedPreferences.strokeColor = advancedPreferences.strokeColor.withAlphaComponent(CGFloat(alpha))
         
-        commentPreferencesChanged()
+        advancedPreferencesChanged()
     }
     
     @IBAction func alphaTextFieldValueChanged(_ sender: Any) {
         // todo インプット確認
         
         let alpha = alphaTextField.doubleValue
-        print("\(alpha)")
         alphaSlider.doubleValue = alpha
         
         advancedPreferences.fontColor = advancedPreferences.fontColor.withAlphaComponent(CGFloat(alpha))
         advancedPreferences.strokeColor = advancedPreferences.strokeColor.withAlphaComponent(CGFloat(alpha))
         
-        commentPreferencesChanged()
+        advancedPreferencesChanged()
     }
     
 }
@@ -129,7 +127,7 @@ extension AdvancedPreferencesViewController : NSFontChanging {
         let newFont = fontManager.convert(advancedPreferences.font)
         advancedPreferences.font = newFont
         fontNameTextField.stringValue = String(format: "%@ %d", advancedPreferences.font.fontName, Int(advancedPreferences.font.pointSize))
-        commentPreferencesChanged()
+        advancedPreferencesChanged()
     }
 }
 

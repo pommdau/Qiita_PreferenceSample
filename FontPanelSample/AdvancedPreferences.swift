@@ -11,6 +11,7 @@ import Cocoa
 
 class AdvancedPreferences {
     
+    // TODO: Setting Default Value
     init() {
         UserDefaults.standard.register(defaults: ["strokeWidth": "4.0"])
     }
