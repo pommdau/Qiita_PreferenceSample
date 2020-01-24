@@ -29,6 +29,7 @@ class ViewController: NSViewController {
                                                     self.updateOutputTextField()
             }
         }
+        outputTextField.wantsLayer = true
         updateOutputTextField()
     }
 
@@ -52,6 +53,7 @@ class ViewController: NSViewController {
         let attibutesString = NSAttributedString(string: outputTextField.stringValue,
                                                  attributes: stringAttributes)
         outputTextField.attributedStringValue = attibutesString
+        outputTextField.layer?.opacity = advancedPreferences.opacity
     }
     
 }

@@ -15,8 +15,8 @@ class AdvancedPreferencesViewController: NSViewController {
     @IBOutlet var strokeColorWell: NSColorWell!
     @IBOutlet var strokeWidthTextField: NSTextField!
     @IBOutlet var strokeWidthStepper: NSStepper!
-    @IBOutlet var alphaSlider: NSSlider!
-    @IBOutlet var alphaTextField: NSTextField!
+    @IBOutlet var opacitySlider: NSSlider!
+    @IBOutlet var opacityTextField: NSTextField!
     
     let advancedPreferences = AdvancedPreferences()
     
@@ -29,8 +29,8 @@ class AdvancedPreferencesViewController: NSViewController {
         strokeColorWell.color = advancedPreferences.strokeColor
         strokeWidthTextField.stringValue = String(format: "%.1f", advancedPreferences.strokeWidth)
         strokeWidthStepper.floatValue = advancedPreferences.strokeWidth
-        alphaSlider.doubleValue = Double(advancedPreferences.fontColor.alphaComponent)
-        alphaTextField.doubleValue = Double(advancedPreferences.fontColor.alphaComponent)
+        opacitySlider.doubleValue = Double(advancedPreferences.opacity)
+        opacityTextField.doubleValue = Double(advancedPreferences.opacity)
         
         advancedPreferencesChanged()
     }
@@ -92,31 +92,27 @@ class AdvancedPreferencesViewController: NSViewController {
         advancedPreferencesChanged()
     }
     
-    @IBAction func alphaSliderValueChanged(_ sender: Any) {
+    @IBAction func opacitySliderValueChanged(_ sender: Any) {
         guard let slider = sender as? NSSlider else {
             return
         }
         
-        let alpha = slider.doubleValue
-        alphaTextField.doubleValue = alpha
-        advancedPreferences.fontColor = advancedPreferences.fontColor.withAlphaComponent(CGFloat(alpha))
-        advancedPreferences.strokeColor = advancedPreferences.strokeColor.withAlphaComponent(CGFloat(alpha))
+        let opacity = slider.floatValue
+        opacityTextField.doubleValue = Double(opacity)
+        advancedPreferences.opacity = opacity
         
         advancedPreferencesChanged()
     }
     
-    @IBAction func alphaTextFieldValueChanged(_ sender: Any) {
+    @IBAction func opacityTextFieldValueChanged(_ sender: Any) {
         // todo インプット確認
         
-        let alpha = alphaTextField.doubleValue
-        alphaSlider.doubleValue = alpha
-        
-        advancedPreferences.fontColor = advancedPreferences.fontColor.withAlphaComponent(CGFloat(alpha))
-        advancedPreferences.strokeColor = advancedPreferences.strokeColor.withAlphaComponent(CGFloat(alpha))
-        
+        let opacity = opacityTextField.floatValue
+        opacitySlider.doubleValue = Double(opacity)
+        advancedPreferences.opacity = opacity
+
         advancedPreferencesChanged()
     }
-    
 }
 
 extension AdvancedPreferencesViewController : NSFontChanging {
@@ -130,4 +126,3 @@ extension AdvancedPreferencesViewController : NSFontChanging {
         advancedPreferencesChanged()
     }
 }
-

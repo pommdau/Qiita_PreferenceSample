@@ -90,7 +90,7 @@
                 </viewController>
                 <customObject id="rVW-Ne-VdU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="478" y="-164"/>
+            <point key="canvasLocation" x="478" y="-128"/>
         </scene>
         <!--Advanced-->
         <scene sceneID="EqN-yZ-vnS">
@@ -126,7 +126,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="showFontPanel:" target="vPa-Ib-ODV" id="fLY-RA-ANa"/>
+                                    <action selector="showFontPanel:" target="vPa-Ib-ODV" id="uGP-mi-vMd"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUY-f2-NoJ">
@@ -161,7 +161,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="changeFontColor:" target="vPa-Ib-ODV" id="ypz-xn-ywm"/>
+                                    <action selector="changeFontColor:" target="vPa-Ib-ODV" id="4cB-rK-5ue"/>
                                 </connections>
                             </colorWell>
                             <colorWell identifier="StrokeColorWell" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bZJ-ug-Oxv">
@@ -169,7 +169,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="changeFontColor:" target="vPa-Ib-ODV" id="gFD-eW-PZW"/>
+                                    <action selector="changeFontColor:" target="vPa-Ib-ODV" id="w3w-ra-85U"/>
                                 </connections>
                             </colorWell>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fEQ-dS-2kN">
@@ -181,7 +181,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <action selector="strokeWidthChanged:" target="vPa-Ib-ODV" id="yML-FQ-e4G"/>
+                                    <action selector="opacityTextFieldValueChanged:" target="vPa-Ib-ODV" id="fRm-mD-Y2h"/>
                                 </connections>
                             </textField>
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ERs-Uf-gU6">
@@ -189,7 +189,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <stepperCell key="cell" continuous="YES" alignment="left" increment="0.10000000000000001" maxValue="100" doubleValue="2" id="qq0-yI-7VY"/>
                                 <connections>
-                                    <action selector="strokeWidthStepperClicked:" target="vPa-Ib-ODV" id="VhQ-T1-UAB"/>
+                                    <action selector="strokeWidthStepperClicked:" target="vPa-Ib-ODV" id="eCL-pv-4Wo"/>
                                 </connections>
                             </stepper>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MLv-PY-3hC">
@@ -206,7 +206,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="9" sliderType="linear" id="UUg-V4-RWg"/>
                                 <connections>
-                                    <action selector="alphaSliderValueChanged:" target="vPa-Ib-ODV" id="Mh4-iB-piO"/>
+                                    <action selector="opacitySliderValueChanged:" target="vPa-Ib-ODV" id="Mh4-iB-piO"/>
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E11-Kt-4Ir">
@@ -232,19 +232,19 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <action selector="alphaTextFieldValueChanged:" target="vPa-Ib-ODV" id="A45-r9-BBA"/>
+                                    <action selector="strokeWidthChanged:" target="vPa-Ib-ODV" id="LeS-fA-0GJ"/>
                                 </connections>
                             </textField>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="alphaSlider" destination="ebV-tU-Zxg" id="a4b-KQ-Cff"/>
-                        <outlet property="alphaTextField" destination="gV3-bU-mnA" id="DLu-ra-pHy"/>
-                        <outlet property="fontColorWell" destination="9ES-wB-Czc" id="dzq-WB-Ts3"/>
-                        <outlet property="fontNameTextField" destination="Wzy-Yl-b91" id="dCe-yV-u0O"/>
-                        <outlet property="strokeColorWell" destination="bZJ-ug-Oxv" id="Sq2-YZ-YlE"/>
-                        <outlet property="strokeWidthStepper" destination="ERs-Uf-gU6" id="HYF-J0-tNb"/>
-                        <outlet property="strokeWidthTextField" destination="fEQ-dS-2kN" id="jUi-kz-zWg"/>
+                        <outlet property="fontColorWell" destination="9ES-wB-Czc" id="JEq-nz-ADl"/>
+                        <outlet property="fontNameTextField" destination="Wzy-Yl-b91" id="f9T-jZ-6sy"/>
+                        <outlet property="opacitySlider" destination="ebV-tU-Zxg" id="sNE-PG-6Xp"/>
+                        <outlet property="opacityTextField" destination="gV3-bU-mnA" id="Hg2-Uz-Cdg"/>
+                        <outlet property="strokeColorWell" destination="bZJ-ug-Oxv" id="mfH-22-dp3"/>
+                        <outlet property="strokeWidthStepper" destination="ERs-Uf-gU6" id="hTu-Dx-OXl"/>
+                        <outlet property="strokeWidthTextField" destination="fEQ-dS-2kN" id="PUM-gJ-CYx"/>
                     </connections>
                 </viewController>
                 <customObject id="S2w-5b-AjP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

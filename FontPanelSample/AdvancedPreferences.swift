@@ -13,7 +13,7 @@ class AdvancedPreferences {
     
     // TODO: Setting Default Value
     init() {
-        UserDefaults.standard.register(defaults: ["strokeWidth": "4.0"])
+        UserDefaults.standard.register(defaults: ["opacity": "1.0", "strokeWidth": "4.0"])
     }
     
     var font: NSFont {
@@ -82,6 +82,17 @@ class AdvancedPreferences {
         
         set (strokeWidth) {
             UserDefaults.standard.set(strokeWidth, forKey: "strokeWidth")
+        }
+    }
+    
+    var opacity: Float {
+        get {
+            let opacity = UserDefaults.standard.float(forKey: "opacity")
+            return opacity
+        }
+        
+        set (opacity) {
+            UserDefaults.standard.set(opacity, forKey: "opacity")
         }
     }
 }

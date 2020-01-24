@@ -18,9 +18,6 @@ class GeneralPreferences {
     
     var message: String {
         get {
-//            guard let name = UserDefaults.standard.object(forKey: "") as? String else {
-//                return NSFont.systemFont(ofSize: NSFont.systemFontSize)
-//            }
             guard let message = UserDefaults.standard.string(forKey: "GEP_message") else {
                 return "いろはにほへと　ちりぬるを"
             }
