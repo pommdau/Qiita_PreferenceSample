@@ -11,22 +11,30 @@ import Cocoa
 
 class GeneralPreferences {
     
-    // TODO: Setting Default Value
+    enum UserDefaultsKey: String {
+        case message
+    }
+    
     init() {
-        UserDefaults.standard.register(defaults: ["": ""])
+        UserDefaults.standard.register(defaults: [UserDefaultsKey.message.rawValue: "いろはにほへと　ちりぬるを"])
+    }
+    
+    // For Debug
+    func resetUserDefaults() {
+        UserDefaults.standard.removeObject(forKey: UserDefaultsKey.message.rawValue)
     }
     
     var message: String {
         get {
-            guard let message = UserDefaults.standard.string(forKey: "GEP_message") else {
-                return "いろはにほへと　ちりぬるを"
+            guard let message = UserDefaults.standard.string(forKey: UserDefaultsKey.message.rawValue) else {
+                return ""
             }
             
             return message
         }
         
         set(message) {
-            UserDefaults.standard.set(message, forKey: "GEP_message")
+            UserDefaults.standard.set(message, forKey: UserDefaultsKey.message.rawValue)
         }
     }
 }
