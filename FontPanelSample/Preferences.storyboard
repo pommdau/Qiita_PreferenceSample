@@ -181,7 +181,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <action selector="opacityTextFieldValueChanged:" target="vPa-Ib-ODV" id="fRm-mD-Y2h"/>
+                                    <action selector="strokeWidthChanged:" target="vPa-Ib-ODV" id="cjk-Jq-3p7"/>
                                 </connections>
                             </textField>
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ERs-Uf-gU6">
@@ -232,7 +232,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <action selector="strokeWidthChanged:" target="vPa-Ib-ODV" id="LeS-fA-0GJ"/>
+                                    <action selector="opacityTextFieldValueChanged:" target="vPa-Ib-ODV" id="Ked-8Q-wN6"/>
                                 </connections>
                             </textField>
                         </subviews>

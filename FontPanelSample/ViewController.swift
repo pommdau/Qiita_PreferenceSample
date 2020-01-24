@@ -5,7 +5,6 @@
 //  Created by HIROKI IKEUCHI on 2020/01/22.
 //  Copyright © 2020年 hikeuchi. All rights reserved.
 //
-// TODO:set saved fbont on fontPanel
 
 import Cocoa
 
@@ -29,7 +28,7 @@ class ViewController: NSViewController {
                                                     self.updateOutputTextField()
             }
         }
-        outputTextField.wantsLayer = true
+        outputTextField.wantsLayer = true   // for changing opacity
         updateOutputTextField()
     }
 

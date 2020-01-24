@@ -110,8 +110,6 @@ class AdvancedPreferencesViewController: NSViewController {
     }
     
     @IBAction func opacityTextFieldValueChanged(_ sender: Any) {
-        // todo インプット確認
-        
         let opacity = opacityTextField.floatValue
         opacitySlider.doubleValue = Double(opacity)
         advancedPreferences.opacity = opacity
