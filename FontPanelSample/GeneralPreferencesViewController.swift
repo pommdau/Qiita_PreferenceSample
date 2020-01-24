@@ -10,9 +10,14 @@ import Cocoa
 
 class GeneralPreferencesViewController: NSViewController {
 
+    @IBOutlet var messageTextField: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
     }
     
+    @IBAction func messageChanged(_ sender: Any) {
+        
+    }
 }

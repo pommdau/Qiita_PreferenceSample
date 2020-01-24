@@ -31,8 +31,8 @@
             <objects>
                 <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="ZKz-B1-Kpd" customClass="PreferencesTabViewController" customModule="FontPanelSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem id="Nha-yS-mmW"/>
-                        <tabViewItem id="ZGJ-6J-YaQ"/>
+                        <tabViewItem label="General" identifier="General" image="NSPreferencesGeneral" id="Nha-yS-mmW"/>
+                        <tabViewItem label="Advanced" identifier="Advanced" image="NSAdvanced" id="ZGJ-6J-YaQ"/>
                     </tabViewItems>
                     <viewControllerTransitionOptions key="transitionOptions" allowUserInteraction="YES"/>
                     <tabView key="tabView" type="noTabsNoBorder" id="vDa-Fq-jSa">
@@ -56,14 +56,14 @@
         <!--General-->
         <scene sceneID="LzO-Ml-ItN">
             <objects>
-                <viewController title="General" id="89y-XT-EI0" sceneMemberID="viewController">
+                <viewController title="General" id="89y-XT-EI0" customClass="GeneralPreferencesViewController" customModule="FontPanelSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="VTC-0R-mov">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="62"/>
+                        <rect key="frame" x="0.0" y="0.0" width="407" height="229"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BcL-8p-aTr">
-                                <rect key="frame" x="18" y="22" width="118" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="frame" x="18" y="192" width="118" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Showing Message:" id="AE9-hz-P0v">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -71,27 +71,33 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cwW-Vv-oCY">
-                                <rect key="frame" x="142" y="20" width="228" height="22"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="C0K-JB-ayd">
+                                <rect key="frame" x="20" y="20" width="367" height="163"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="C0K-JB-ayd">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="messageChanged:" target="89y-XT-EI0" id="Noh-3Z-4pc"/>
+                                </connections>
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="messageTextField" destination="cwW-Vv-oCY" id="ffp-gD-o9Q"/>
+                    </connections>
                 </viewController>
                 <customObject id="rVW-Ne-VdU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469" y="-247"/>
+            <point key="canvasLocation" x="495" y="-164"/>
         </scene>
         <!--Advanced-->
         <scene sceneID="EqN-yZ-vnS">
             <objects>
                 <viewController title="Advanced" id="vPa-Ib-ODV" customClass="AdvancedPreferencesViewController" customModule="FontPanelSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="KrL-5A-ddO">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="175"/>
+                        <rect key="frame" x="0.0" y="0.0" width="461" height="175"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMd-Ku-adX">
@@ -104,7 +110,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wzy-Yl-b91">
-                                <rect key="frame" x="111" y="133" width="173" height="22"/>
+                                <rect key="frame" x="111" y="133" width="244" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="Helvetica 13" drawsBackground="YES" id="0Ut-t8-arJ">
                                     <font key="font" metaFont="system"/>
@@ -113,7 +119,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPX-vf-s2R">
-                                <rect key="frame" x="286" y="126" width="90" height="32"/>
+                                <rect key="frame" x="357" y="126" width="90" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Select..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aZD-oR-Ze0">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -196,15 +202,24 @@
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebV-tU-Zxg">
-                                <rect key="frame" x="109" y="19" width="177" height="25"/>
+                                <rect key="frame" x="109" y="19" width="248" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="9" sliderType="linear" id="UUg-V4-RWg"/>
                                 <connections>
                                     <action selector="alphaSliderValueChanged:" target="vPa-Ib-ODV" id="Mh4-iB-piO"/>
                                 </connections>
                             </slider>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E11-Kt-4Ir">
+                                <rect key="frame" x="50" y="23" width="55" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Opacity:" id="gQL-bG-b2G">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gV3-bU-mnA">
-                                <rect key="frame" x="292" y="21" width="52" height="22"/>
+                                <rect key="frame" x="363" y="20" width="52" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="right" drawsBackground="YES" id="tTQ-n8-XIP">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="percent" lenient="YES" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="13r-W2-i55">
@@ -220,15 +235,6 @@
                                     <action selector="alphaTextFieldValueChanged:" target="vPa-Ib-ODV" id="A45-r9-BBA"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E11-Kt-4Ir">
-                                <rect key="frame" x="50" y="23" width="55" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Opacity:" id="gQL-bG-b2G">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -243,7 +249,7 @@
                 </viewController>
                 <customObject id="S2w-5b-AjP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469" y="-17"/>
+            <point key="canvasLocation" x="504.5" y="130.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="E4Y-5u-neS">
@@ -318,4 +324,8 @@
             <point key="canvasLocation" x="1513" y="5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
+    </resources>
 </document>
